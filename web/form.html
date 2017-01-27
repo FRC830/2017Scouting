@@ -2,10 +2,11 @@
 {% block body %}
 <div class="row">
 	<div class='col-md-8'>
-		<h2>First Steamworks Scouting Form</h2>
-	</div>
+		<h2 title="sofia thinks there aren't any memes">First Steamworks Scouting Form</h2>
+    	<img src="logo.png" id="logo" style="width:150px;height:100px;">></img>
+  	</div>
 </div>
-<form method="post" id="scouting-form" autocomplete="off">
+<form method="post"  id="scouting-form" autocomplete="off">
   {{ form.csrf_token }}
   <div class="row form-group">
 		{{ form.match_id }}
@@ -19,12 +20,12 @@
       {% else %}
         <div><label>Player Station: {{conf.get('station', '?')}}</label></div>
         <div><label>Event: {{conf.get('event_name', '?')}}</label></div>
-        <div id="alert" class="alert" style="display: none;"></div>
+        <div id="alert" class="alert" style="display: none;" title="stop it, get some help"></div>
       {% endif %}
     </div>
   </div>
   <div class="game-period">
-  	<h3>Autonomous</h3>
+  	<h3 title="ur a pleb lord">Autonomous</h3>
   	<div class="row">
   		<div class="col-md-6 col-xs-12">
   			{{ form.crossed_baseline.label }} {{ form.crossed_baseline }}
