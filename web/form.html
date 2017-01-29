@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block body %}
 <div class="row">
+	<div class="col-md-4 pull-right">
+		<img src="/static/custom/logo.png" id="logo" style="width:150px;height:100px;float:right;">
+	</div>
 	<div class='col-md-8'>
-		<h2 title="sofia thinks there aren't any memes">First Steamworks Scouting Form</h2>
-    	<img src="logo.png" id="logo" style="width:150px;height:100px;">></img>
-  	</div>
+		<h2 title="Don't be a Danny downer">First Steamworks Scouting Form</h2>
+    </div>
 </div>
 <form method="post"  id="scouting-form" autocomplete="off">
   {{ form.csrf_token }}
@@ -20,12 +22,12 @@
       {% else %}
         <div><label>Player Station: {{conf.get('station', '?')}}</label></div>
         <div><label>Event: {{conf.get('event_name', '?')}}</label></div>
-        <div id="alert" class="alert" style="display: none;" title="stop it, get some help"></div>
+        <div id="alert" class="alert" style="display: none;" title="Wow u failure"></div>
       {% endif %}
     </div>
   </div>
   <div class="game-period">
-  	<h3 title="ur a pleb lord">Autonomous</h3>
+  	<h3 title="Don't ask questions">Autonomous</h3>
   	<div class="row">
   		<div class="col-md-6 col-xs-12">
   			{{ form.crossed_baseline.label }} {{ form.crossed_baseline }}
@@ -48,8 +50,8 @@
  	</div>
   </div>
   <div class='game-period'>
-    <h3>Teleop</h3>
-   	<div class="row form-group">
+    <h3 title="useless">Teleop</h3>
+   	<div class="row form-group"> 
   		{{ form.teleop_gears }}
   	</div>
   	<div class="row form-group">
