@@ -18,6 +18,4 @@ class Form(flask_wtf.Form):
     teleop_techfouls = IntegerField('Techfouls', default=0)
     teleop_fouls = IntegerField('Fouls', default=0)
     hanging = CheckboxButtonField('Did it hang?', col_md=4)
-
-    missed_stuff = CheckboxButtonField('Did you fall asleep?', col_md=3)
     comments = TextAreaField('', col_md=12)
