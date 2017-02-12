@@ -1,89 +1,104 @@
 {% extends "base.html" %}
 {% block body %}
 <div class="row">
-	<div class="col-md-4 pull-right">
-		<img src="/static/custom/logo.png" id="logo" style="width:150px;height:100px;float:right;" title="Make scouting great again">
-	</div>
-	<div class='col-md-8'>
-		<h2 title="Don't be a Danny Downer">FIRST Steamworks Scouting Form</h2>
-    </div>
+  <div class="col-md-4 pull-right">
+    <img src="/static/custom/logo.png" id="logo" style="width:150px;height:100px;float:right;" title="Make scouting great again">
+  </div>
+  <div class='col-md-8'>
+    <h2 title="Don't be a Danny Downer">FIRST Steamworks Scouting Form</h2>
+  </div>
 </div>
 <form method="post"  id="scouting-form" autocomplete="off">
   {{ form.csrf_token }}
   <div class="row form-group">
-		{{ form.match_id }}
-		{{ form.team_id }}
+    {{ form.match_id }}
+    {{ form.team_id }}
   </div>
   <div class="row">  
     <div class="col-md-6">
       {% if conf.get('station', 'none').lower() == 'none' %}
-        <div id="alert" class="alert alert-warning">No player station selected; team ID completion is not available.
+      <div id="alert" class="alert alert-warning">No player station selected; team ID completion is not available.
         See {{link_to('config_form', 'Settings')}} to choose a station.</div>
-      {% else %}
+        {% else %}
         <div><label>Player Station: {{conf.get('station', '?')}}</label></div>
         <div><label>Event: {{conf.get('event_name', '?')}}</label></div>
         <div id="alert" class="alert" style="display: none;" title="Wow u failure"></div>
-      {% endif %}
+        {% endif %}
+      </div>
     </div>
-  </div>
-  <div class="game-period">
-  	<div class="row">
-	  	<div class="col-md-2">
-			<h3 title="Don't ask questions. Expect Everything.">Autonomous</h3>
-		</div>
-			{{ form.crossed_baseline}}
-		<div class="col-md-8">
-			{{ form.auton_lowgoal }}
-			{{ form.auton_fouls }}
-		</div>
-	</div>
-	<div class="row form-group">
-		<div class="col-md-2">
-		</div>
-			{{ form.auton_gears }}
-		<div class="col-md-8">
-			{{ form.auton_highgoal }}
-			{{ form.auton_techfouls }}
-		</div>
-	</div>
-  </div>
-  <div class='game-period'>
-  	<div class="row">
-  		<div class="col-md-2">
-    		<h3 title="Blame CAD. Do nothing.">Teleop</h3> 
-    	</div>
-    	<div class="col-md-9">
-  			{{ form.teleop_gears }}
-  			{{ form.teleop_highgoal }}
-	 		{{ form.teleop_lowgoal }}
- 		</div>
-  	</div>
-	<div class="row">
-	  	<div class="col-md-2">
-	  	</div>
-	  	<div class="col-md-9">
-	 		{{ form.teleop_fouls }}
- 			{{ form.teleop_techfouls }}
-  			{{ form.hanging }}	
-	 	</div>
-	 </div>
-	<div class="row">
-		<hr>
-	</div>
+    <div class="game-period">
+      <div class="row">
+        <div class="col-md-2">
+          <h3 title="Don't ask questions. Expect Everything.">Autonomous</h3>
+        </div>
+        <div class="col-md-10">
+          {{ form.crossed_baseline}}
+          {{ form.auton_lowgoal }}
+          {{ form.auton_fouls }}
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-10">
+          {{ form.auton_gears }}
+          {{ form.auton_highgoal }}
+          {{ form.auton_techfouls }}
+        </div>
+      </div>
     </div>
-  	<div class='row'>
-  		<div class="col-md-2">
-  		</div>
-  		<div class='col-md-1'>
-  			<p>Comments:</p>
-  		</div>
-  		<div class='col-md-8'>
-  			{{ form.comments(rows='3') }}
-  		</div>
-  	</div>
-	  <div class="row">
-    <div class="col-md-4"><input type="submit" class="btn btn-primary" value="Save"></div>
-  </div>
+    <div class='game-period'>
+      <div class="row">
+        <div class="col-md-2">
+          <h3 title="Blame CAD. Do nothing.">Teleop</h3> 
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            {{ form.pickup_fuel }}
+            {{ form.teleop_lowgoal }}
+            {{ form.teleop_fouls }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            {{ form.hanging }}
+            {{ form.teleop_highgoal }}
+            {{ form.teleop_techfouls }}
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            {{ form.pickup_gears }}
+            {{ form.teleop_gears }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <hr>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-md-2">
+      </div>
+      <div class='col-md-1'>
+        <p>Comments:</p>
+      </div>
+      <div class='col-md-8'>
+        {{ form.comments(rows='3') }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"><input type="submit" class="btn btn-primary" value="Save"></div>
+    </div>
   </div>
 </form>
 {% endblock %}
