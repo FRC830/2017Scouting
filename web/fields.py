@@ -1,5 +1,6 @@
 
 import flask_wtf
+import wtforms.validators
 from widgets import * #http://wtforms.readthedocs.org/en/latest/fields.html
 
 class Form(flask_wtf.Form):
@@ -21,4 +22,5 @@ class Form(flask_wtf.Form):
     teleop_techfouls = IntegerField('Techfouls', default=0)
     teleop_fouls = IntegerField('Fouls', default=0)
     hanging = CheckboxButtonField('Did it hang?', col_md=3)
+    defense = IntegerField("Rank defense 1-10", default=0, validators=[wtforms.validators.NumberRange(min=1,max=10)])
     comments = TextAreaField('', col_md=12)
