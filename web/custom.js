@@ -7,5 +7,5 @@ $(function(){
     	else {
     		$('.content').css('background','white');
     	}
-    }
+    })
 })
